@@ -8,7 +8,7 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- <link rel="manifest" href="site.webmanifest"> -->
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png" />
     <!-- Place favicon.ico in the root directory -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <!-- jQuery library -->
@@ -166,6 +166,9 @@
                                                 <a href="#">Quizzes</a>
 
                                             </li>
+                                             <li>
+                                                <a href="/attendance">Attendance</a>
+                                            </li>
                                             <li>
                                                 <a href="/about">About</a>
 
@@ -216,7 +219,7 @@
 
     <!-- //////////////////////////////////// -->
     <!--Navbar-->
-    <form action="/student" method="GET">
+    <form  method="GET">
         <div class="container text-center" style="text-align: center;width:max-content;">
             <nav class=" navbar navbar-expand-lg navbar-dark primary-color ">
 
@@ -224,40 +227,53 @@
                 <div class=" collapse navbar-collapse " id=" basicExampleNav " class="">
 
                     <!-- Links -->
-                    <ul class=" navbar-nav mr-auto ">
-                        <select class=" browser-default custom-select " name="journal">Journals
-                            <option selected disabled>Journals</option>
-                            <option value="pubyear">Year</option>
-                            <option value="citedby-count">Citation count</option>
-                            <!-- <option value=" 3 ">Three</option> -->
-                        </select>
-                        <select class=" browser-default custom-select " name="video">Videos
-                            <option selected disabled>Videos</option>
-                            <option value="relevance">Relevance</option>
-                            <option value="date">Year</option>
-                            <option value="viewCount">Views</option>
-                        </select>
-                        <select class=" browser-default custom-select " name="book">Books
-                            <option selected disabled>Books</option>
-                            <option value="relevance">Relevance</option>
-                            <option value="newest">Year</option>
-                            <!-- <option value=" 3 ">Three</option> -->
-                        </select>
-                        <select class=" browser-default custom-select " name="project">Projects
-                            <option selected disabled>Projects</option>
-                            <option value="default">Best Match</option>
-                            <option value="stars">Stars</option>
-                            <option value="forks">Forks</option>
+                    <ul class=" navbar-nav mr-auto " style="align-items: end;">
+                        <div>
+                            <h6 class="text-light">Journals</h6>
+                            <select class=" browser-default custom-select " name="journal" >Journals
+                                <option selected disabled>Journals</option>
+                                <option <%= parameters.parj === "pubyear" && "selected" %> value="pubyear">Year</option>
 
-                            <!-- <option value=" 3 ">Three</option> -->
+                                <!-- <option value=" 3 ">Three</option> -->
+                            </select>
+                            </div>
+                        <div>
+                            <h6 class="text-light">Videos</h6>
+                            <select class=" browser-default custom-select " name="video" value=<%= parameters.pary%>>Videos
+                                <option selected disabled>Videos</option>
+                                <option <%= parameters.pary === "relevance" && "selected" %> value="relevance">Relevance</option>
+                                <option <%= parameters.pary === "date" && "selected" %> value="date">Year</option>
+                                <option <%= parameters.pary === "viewCount" && "selected" %> value="viewCount">Views</option>
                         </select>
+                        </div>
+                        <div>
+                            <h6 class="text-light">Books</h6>
+                            <select class=" browser-default custom-select " name="book" >Books
+                                <option selected disabled>Books</option>
+                                <option  <%= parameters.parb === "relevance" && "selected" %> value="relevance">Relevance</option>
+                                <option  <%= parameters.parb === "newest" && "selected" %> value="newest">Year</option>
+                                <!-- <option value=" 3 ">Three</option> -->
+                            </select>
+                        </div>
+                        <div>
+                            
+                            <h6 class="text-light">Projects</h6>
+                            <select class=" browser-default custom-select " name="project"  >Projects
+                                <option  disabled>Projects</option>
+                                <option <%= parameters.parg === "default" && "selected" %> value="default">Best Match</option>
+                                <option <%= parameters.parg === "stars" && "selected" %> value="stars">Stars</option>
+                                <option <%= parameters.parg === "forks" && "selected" %> value="forks">Forks</option>
+                                
+                                <!-- <option value=" 3 ">Three</option> -->
+                            </select>
+                        </div>
                         <input type="text" name="topic" style="display:none" value=<%=query%>>
 
                 </div>
                 <div>
                     <a href="/student" style=" height:100%;">
                         <button
-                            style=" height: 5vh;border: 0;padding-top: 1vh;background-color: #00D363;color:white;padding-top: 10%;border-radius:10% "><i
+                            style=" border: 0;padding: 1rem;background-color: #00D363;color:white;border-radius:10% "><i
                                 class=" fa fa-search " style="background-color: #00D363;color:white"
                                 type="submit"></i></button></a>
                 </div>
@@ -444,7 +460,7 @@
                                             </a>
                                         </div>
                                         <p>
-                                            edutracker@support.com <br /> +91 9582723616 <br /> JIIT ,NOIDA, Technology
+                                            edutracker@support.com <br /> +91 9582723616 <br /> VITTBI, Technology
                                             Tower, VIT,Vellore
                                         </p>
                                         <div class="socail_links">

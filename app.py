@@ -1,5 +1,14 @@
 import sys
 import os
+# if "java" in sys.argv[1] :
+#     print(",java,jvm,springboot,oracle")
+# else:
+#     print(",basis dimension,spanning set linear independence,subspace vector space,vector rn,vector space")
+
+
+
+# sys.path.append('/Users/sparsh/Documents/Projects/edutracker/.venv/lib/python3.10/site-packages/')
+# sys.path.append('/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/')
 # from flask import Flask, render_template
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import RegexpTokenizer

@@ -81,9 +81,6 @@
                                             <li>
                                                 <a href="/student">Resources</a>
                                             </li>
-                                             <li>
-                                                <a href="/faculty/upload">Attendance</a>
-                                            </li>
                                             <li>
                                                 <a href="#">Quizzes</a>
                                                 <!-- <i class="ti-angle-down"></i></a>
@@ -140,38 +137,43 @@
         </div>
     </header>
     <!-- header-end -->
-    <div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo ">
-        <h1 class="heading">Available Resources</h1>
+    <div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo text-center">
+        <form action="/faculty/attendance" method="post">
+
+        <h1 class="heading">Student Attendance : <%= date %></h1>
+       <% if(presentStudents?.length){ %>
+        <h2 class="heading">Attendance already posted !!</h2>
+       <% } %>
+    
+
+       %>
         <table class="container">
             <thead>
 
                 <tr>
-                    <th>Faculty</th>
-                    <th>Resource</th>
+                    <th>Students</th>
+                    <th>Mark Attendance</th>
                 </tr>
             </thead>
 
             <div class="row text-light">
-                <% data.forEach(file=>{%>
-                    <% const href=`/student/${file.path.split('\\')[2]??file.path}?topic=${file.topic.split(' ').join('%20')}`%>
+                <% students.forEach(student=>{%>
                     <tr>
                         
                         <td class="col-4">
                             <h4 class="text-light">
-                                <%=file.author.username%>
+                                <%=student.username%>
                             </h4>
                         </td>
                         <td class="col-4">
-                            <h4 class="text-light">
-                                <a href=<%=href%>>
-                                    <%=file.topic%>
-                                </a>
-                            </h4>
+                                <input type="checkbox" <%=presentStudents.includes(student._id)?"checked":"a"%> name=<%=student._id%> id="">
                         </td>
                         <% }) %>
                         </tr>
             </div>
         </table>
+        <button class="boxed-btn3 mt-3 mx-auto"  type="submit">Submit attendance</button>
+        </form>
     </div>
 
     <footer class="footer" id="footer">

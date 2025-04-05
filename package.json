@@ -1,5 +1,5 @@
 {
-    "name": "Dhritika",
+    "name": "sparshjain",
     "version": "1.0.0",
     "description": "",
     "main": "app.js",
@@ -22,7 +22,6 @@
         "mongoose": "^5.9.2",
         "multer": "^1.4.2",
         "multer-gridfs-storage": "^4.0.2",
-        "nltk": "^0.0.1",
         "nodemon": "^3.1.9",
         "passport": "^0.4.1",
         "passport-local": "^1.0.0",

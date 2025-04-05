@@ -12,14 +12,7 @@ const storage = multer.diskStorage({
     },
     filename: function (req, file, cb) {
         console.log(file);
-        cb(
-            null,
-            Date.now() +
-                "_" +
-                file.originalname.split(" ")[0] +
-                "." +
-                file.originalname.split(".")[1],
-        );
+        cb(null, Date.now() + "_" + file.originalname.split(" ")[0] + "." + file.originalname.split(".")[1]);
     },
 });
 const fileFilter = (req, file, cb) => {
@@ -43,29 +36,24 @@ router.get("/", async (req, res) => {
     const files = await File.find({});
     res.json(files);
 });
-router.post(
-    "/upload",
-    middleware.isFaculty,
-    upload.single("file"),
-    async (req, res) => {
-        // console.log(req.body);
-        // console.log(req.file);
-        // console.log(req.user.)
-        if (req.file) {
-            const file = new File({
-                path: req.file.path,
-                topic: req.body.topic,
-                author: {
-                    id: req.user._id,
-                    username: req.user.username,
-                },
-            });
-            await file.save();
-            console.log("uploaded");
-        }
+router.post("/upload", middleware.isFaculty, upload.single("file"), async (req, res) => {
+    // console.log(req.body);
+    // console.log(req.file);
+    // console.log(req.user.)
+    if (req.file) {
+        const file = new File({
+            path: req.file.path,
+            topic: req.body.topic,
+            author: {
+                id: req.user._id,
+                username: req.user.username,
+            },
+        });
+        await file.save();
+        console.log("uploaded");
+    }
 
-        res.redirect("/");
-    },
-);
+    res.redirect("/");
+});
 
 module.exports = router;
